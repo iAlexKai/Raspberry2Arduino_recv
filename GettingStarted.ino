@@ -23,8 +23,9 @@ bool role = 0;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println(F("RF24/examples/GettingStarted"));
-  Serial.println(F("*** PRESS 'T' to begin transmitting to the other node"));
+  Serial.println(F("Start\n"));
+  //Serial.println(F("RF24/examples/GettingStarted"));
+  //Serial.println(F("*** PRESS 'T' to begin transmitting to the other node"));
   
   radio.begin();
 
@@ -102,17 +103,18 @@ void loop() {
     int len = 0;
     
     if( radio.available()){
-        Serial.println("Now waiting for receiving");
+        //Serial.println("Now waiting for receiving");
         len = radio.getDynamicPayloadSize();
         char gotmsg[31] = "";
         while(radio.available()) {
            radio.read(&gotmsg, len);
-           Serial.println(F("Message received, which is"));
+ //          Serial.println(F("Message received, which is"), gotmsg);
            Serial.println(gotmsg);
+           Serial.println(len);
         }  
     
-        Serial.print(F("Successfully received message: "));
-        Serial.println(gotmsg);  
+//        Serial.print(F("Successfully received message: "));
+//        Serial.println(gotmsg);  
      
    }
  }
